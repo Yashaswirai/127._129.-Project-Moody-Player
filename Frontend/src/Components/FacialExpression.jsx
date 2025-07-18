@@ -77,7 +77,7 @@ const FacialExpression = ({ setSong }) => {
     setInterval(detectExpressions, 1000);
   }, [detectExpressions]);
   return (
-    <div className="w-2/5 h-screen p-5 border">
+    <div className="w-2/5 h-fit p-5 border">
       <h2 className="w-2/5 text-center text-2xl font-bold text-white">
         Moody Player
       </h2>

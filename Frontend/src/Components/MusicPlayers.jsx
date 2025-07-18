@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const MusicPlayers = ({ song }) => {
+const MusicPlayers = ({ song, setIsUploadOpen, isUploadOpen }) => {
   const audioRef = useRef(null);
   const [playingSong, setPlayingSong] = useState(null);
   const [isPlaying, setIsPlaying] = useState({});
@@ -22,7 +22,8 @@ const MusicPlayers = ({ song }) => {
     }
   };
   return (
-    <div className="MusicPlayers w-3/5 h-screen p-5 border">
+    <div className="MusicPlayers w-3/5 h-screen p-5 border relative">
+      <button className={`mt-4 p-2 ${isUploadOpen ? 'bg-red-500' : 'bg-blue-500'} text-white rounded active:scale-95 absolute top-0 right-5 z-20`} onClick={() => setIsUploadOpen((prev) => !prev)}>{isUploadOpen ? 'Close' : 'Add Song'}</button>
       <h2 className="w-full text-center text-2xl font-bold text-white">
         Music according to your mood🫡
       </h2>
