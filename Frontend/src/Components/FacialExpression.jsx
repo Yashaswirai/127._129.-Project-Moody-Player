@@ -1,11 +1,13 @@
 import  { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
+import axios from "axios";
 
-const FacialExpression = () => {
+const FacialExpression = ({ setSong }) => {
   const videoRef = useRef(null);
   const [expression, setExpression] = useState(null);
   const [capture, setCapture] = useState("");
   const [isWebcamStarted, setIsWebcamStarted] = useState(false);
+
   useEffect(() => {
     const loadModels = async () => {
       try {
@@ -18,6 +20,20 @@ const FacialExpression = () => {
     };
     loadModels();
   }, []);
+
+  const getSongsByMood = async (mood) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/song?mood=${mood}`);
+      setSong(response.data.data);
+    } catch (error) {
+      console.error("Error fetching songs:", error);
+    }
+  };
+  useEffect(() => {
+    if (capture) {
+      getSongsByMood(capture);
+    }
+  }, [capture]);
   const startWebcam = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -65,21 +81,21 @@ const FacialExpression = () => {
       <h2 className="w-2/5 text-center text-2xl font-bold text-white">
         Moody Player
       </h2>
-      <div className="w-full rounded-lg mt-2 p-4 bg-gray-400">
-        <video ref={videoRef} className="w-full h-full" autoPlay muted />
-        <div className="text-center text-lg mt-2 text-gray-700">
+      <div className="w-full rounded-lg mt-2 p-4">
+        <video ref={videoRef} className="w-full h-full rounded-4xl" autoPlay muted />
+        <div className="text-center text-lg mt-2 text-white">
           Expression:{" "}
           <span className="font-bold">
             {expression ? expression : "Unknown"}
           </span>
         </div>
       </div>
-      <div className="btns flex gap-4 items-center mt-4">
         {capture && (
-          <div className="mt-4 p-2 bg-green-500 text-white rounded">
+          <div className="w-fit mx-auto p-2 bg-green-500 text-white rounded text-center">
             Expression Captured: {capture}
           </div>
         )}
+      <div className="btns flex gap-4 items-center mt-4">
         <button
           className="mt-4 p-2 bg-blue-500 text-white rounded active:scale-95"
           onClick={() => {
