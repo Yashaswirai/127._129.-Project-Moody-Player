@@ -61,7 +61,7 @@ const FacialExpression = () => {
     setInterval(detectExpressions, 1000);
   }, [detectExpressions]);
   return (
-    <div className="w-2/5 h-1/2 p-5 border">
+    <div className="w-2/5 h-screen p-5 border">
       <h2 className="w-2/5 text-center text-2xl font-bold text-white">
         Moody Player
       </h2>
@@ -74,7 +74,7 @@ const FacialExpression = () => {
           </span>
         </div>
       </div>
-      <div className="btns">
+      <div className="btns flex gap-4 items-center mt-4">
         {capture && (
           <div className="mt-4 p-2 bg-green-500 text-white rounded">
             Expression Captured: {capture}
@@ -93,7 +93,7 @@ const FacialExpression = () => {
           {isWebcamStarted ? "Stop Webcam" : "Start Webcam"}
         </button>
         <button
-          className="mt-4 ml-2 p-2 bg-green-500 text-white rounded active:scale-95"
+          className="mt-4 p-2 bg-green-500 text-white rounded active:scale-95"
           onClick={() => setCapture(expression)}
         >
           Capture Expression
