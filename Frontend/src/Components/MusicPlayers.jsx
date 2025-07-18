@@ -27,27 +27,33 @@ const MusicPlayers = ({ song }) => {
         Music according to your mood🫡
       </h2>
       <div className="MusicList mt-4">
-        {song.map((song) => (
-          <div
-            key={song._id}
-            className="song p-2 border-b border-gray-600 flex items-center justify-between"
-          >
-            <div className="song-info w-2/6">
-              <h3 className="text-lg font-semibold text-white">
-                {song.title.substr(0, 30)} ...
-              </h3>
-              <audio ref={audioRef} className="hidden"></audio>
-              <p className="text-gray-400">{song.artist}</p>
-            </div>
-            <button
-              className={`text-2xl text-white rounded active:scale-95`}
-              onClick={() => (isPlaying[song._id] ? stopSong() : playSong(song))}
+        {song.length > 0 ? (
+          song.map((song) => (
+            <div
+              key={song._id}
+              className="song p-2 border-b border-gray-600 flex items-center justify-between"
             >
-              {isPlaying[song._id] ? "⏸️" : "▶️"}
-            </button>
-            <div className="text-gray-400">{song.mood}</div>
-          </div>
-        ))}
+              <div className="song-info w-2/6">
+                <h3 className="text-lg font-semibold text-white">
+                  {song.title.substr(0, 30)} ...
+                </h3>
+                <audio ref={audioRef} className="hidden"></audio>
+                <p className="text-gray-400">{song.artist}</p>
+              </div>
+              <button
+                className={`text-2xl text-white rounded active:scale-95`}
+                onClick={() =>
+                  isPlaying[song._id] ? stopSong() : playSong(song)
+                }
+              >
+                {isPlaying[song._id] ? "⏸️" : "▶️"}
+              </button>
+              <div className="text-gray-400">{song.mood}</div>
+            </div>
+          ))
+        ) : (
+          <h4 className="text-gray-400 text-sm text-center">Capture expression to play music</h4>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import  { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
-import axios from "axios";
+import axios from "../utils/API";
 
 const FacialExpression = ({ setSong }) => {
   const videoRef = useRef(null);
@@ -23,7 +23,7 @@ const FacialExpression = ({ setSong }) => {
 
   const getSongsByMood = async (mood) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/song?mood=${mood}`);
+      const response = await axios.get(`/song?mood=${mood}`);
       setSong(response.data.data);
     } catch (error) {
       console.error("Error fetching songs:", error);
