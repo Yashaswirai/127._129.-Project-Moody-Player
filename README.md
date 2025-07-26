@@ -7,6 +7,7 @@ A smart music player that uses facial expression recognition to detect your mood
 - **Real-time Facial Expression Detection**: Uses your webcam to analyze facial expressions and detect emotions
 - **Mood-based Music Recommendation**: Automatically fetches and plays songs based on your detected mood
 - **Music Upload & Management**: Upload your own music files and categorize them by mood
+- **AI-Powered Mood Categorization**: Uploaded music gets automatically categorized to appropriate moods using Gemini API
 - **Responsive Music Player**: Clean, intuitive interface for playing, pausing, and managing your music
 - **Multiple Mood Categories**: Supports Happy, Sad, Energetic, Calm, Romantic, Angry, and Nostalgic moods
 
@@ -132,7 +133,7 @@ moody-player/
 2. **Mood Mapping**: Detected expressions are mapped to mood categories (happy, sad, energetic, etc.)
 3. **Music Fetching**: Based on the detected mood, the app queries the backend for songs matching that mood
 4. **Music Playback**: Retrieved songs are displayed in the music player interface where you can play, pause, and browse tracks
-5. **Music Upload**: Users can upload their own music files and categorize them by mood for future playback
+5. **Music Upload**: Users can upload their own music files which get automatically categorized by mood using Gemini API for intelligent classification
 
 ## 🛠️ API Endpoints
 

@@ -24,12 +24,8 @@ const MusicPlayers = ({ song, setIsUploadOpen, isUploadOpen }) => {
     const moodEmojis = {
       happy: '😊',
       sad: '😢',
-      energetic: '⚡',
-      calm: '😌',
-      romantic: '💕',
       angry: '😠',
-      nostalgic: '🌅',
-      neutrsal: '😐'
+      neutral: '😐'
     };
     return moodEmojis[mood] || '🎵';
   };

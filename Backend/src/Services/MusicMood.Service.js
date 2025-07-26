@@ -21,7 +21,7 @@ async function main(filePath) {
       model: "gemini-2.5-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
-        "analyze its mood in any of the following options: happy, sad, angry, relaxed, energetic, romantic, nostalgic, or neutral. Only return the mood as a single word.",
+        "analyze its mood in any of the following options: happy, sad, angry, or neutral. Only return the mood as a single word.",
       ]),
       config: {
         thinkingConfig: {
