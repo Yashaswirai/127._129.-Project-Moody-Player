@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Responsive base styles */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 /* Custom animations and transitions */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -39,9 +50,15 @@
   animation: shimmer 2s infinite;
 }
 
-/* Custom scrollbar */
+/* Improved responsive scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
+}
+
+@media (min-width: 640px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -60,15 +77,31 @@
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 640px) {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 .glass-dark {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 640px) {
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* Button hover effects */
@@ -76,6 +109,13 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-height: 44px; /* Minimum touch target */
+}
+
+@media (min-width: 640px) {
+  .btn-hover {
+    min-height: auto;
+  }
 }
 
 .btn-hover::before {
@@ -201,36 +241,49 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+@media (max-width: 639px) {
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible {
+    outline-width: 3px;
+  }
+}
+
 /* Improved hover states */
 .hover-lift:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Music visualizer bars */
+/* Responsive music visualizer bars */
 @keyframes musicBar1 {
-  0%, 100% { height: 4px; }
-  50% { height: 20px; }
+  0%, 100% { height: 3px; }
+  50% { height: 16px; }
 }
 
 @keyframes musicBar2 {
-  0%, 100% { height: 8px; }
-  25%, 75% { height: 24px; }
+  0%, 100% { height: 6px; }
+  25%, 75% { height: 20px; }
 }
 
 @keyframes musicBar3 {
-  0%, 100% { height: 12px; }
-  33%, 66% { height: 28px; }
+  0%, 100% { height: 9px; }
+  33%, 66% { height: 24px; }
 }
 
-.music-bar-1 {
-  animation: musicBar1 1s ease-in-out infinite;
-}
+@media (min-width: 640px) {
+  @keyframes musicBar1 {
+    0%, 100% { height: 4px; }
+    50% { height: 20px; }
+  }
 
-.music-bar-2 {
-  animation: musicBar2 1.2s ease-in-out infinite;
-}
+  @keyframes musicBar2 {
+    0%, 100% { height: 8px; }
+    25%, 75% { height: 24px; }
+  }
 
-.music-bar-3 {
-  animation: musicBar3 0.8s ease-in-out infinite;
+  @keyframes musicBar3 {
+    0%, 100% { height: 12px; }
+    33%, 66% { height: 28px; }
+  }
 }

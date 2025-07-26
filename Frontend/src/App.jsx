@@ -8,20 +8,20 @@ const App = () => {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
 
   return (
-    <div className="relative w-screen min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
       <div className="absolute inset-0 bg-black/20"></div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full h-screen flex flex-col lg:flex-row">
+      <div className="relative z-10 w-full min-h-screen flex flex-col md:flex-row">
         {/* Left panel - Facial Expression */}
-        <div className="w-full lg:w-2/5 h-1/2 lg:h-full border-b lg:border-b-0 lg:border-r border-white/10">
+        <div className="w-full md:w-2/5 lg:w-2/5 h-[50vh] md:h-screen border-b md:border-b-0 md:border-r border-white/10">
           <FacialExpression setSong={setSong} />
         </div>
 
         {/* Right panel - Music Player */}
-        <div className="w-full lg:w-3/5 h-1/2 lg:h-full">
+        <div className="w-full md:w-3/5 lg:w-3/5 h-[50vh] md:h-screen">
           <MusicPlayers song={song} setIsUploadOpen={setIsUploadOpen} isUploadOpen={isUploadOpen} />
         </div>
       </div>
